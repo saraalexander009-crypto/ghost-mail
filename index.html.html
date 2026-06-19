@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GhostMail — Temporary Email Service</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="bg-mesh"></div>
+  <div class="bg-grid"></div>
+
+  <!-- ===================== AUTH PAGE ===================== -->
+  <section id="authPage" class="page active">
+    <div class="auth-wrapper">
+      <div class="auth-card">
+        <div class="auth-header">
+          <div class="brand">
+            <div class="brand-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                <path d="M3 7l9 6 9-6M3 7v10a2 2 0 002 2h14a2 2 0 002-2V7M3 7l2-2h14l2 2" stroke="url(#brandGrad1)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                <defs>
+                  <linearGradient id="brandGrad1" x1="0" y1="0" x2="24" y2="24">
+                    <stop offset="0%" stop-color="#7c5cff"/>
+                    <stop offset="100%" stop-color="#22d3ee"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+            <h1>GhostMail</h1>
+          </div>
+          <p class="tagline">Disposable email, instantly. No trace, no sign-up.</p>
+        </div>
+
+        <div class="tabs" role="tablist">
+          <button class="tab active" data-tab="signin" role="tab">Sign In</button>
+          <button class="tab" data-tab="signup" role="tab">Sign Up</button>
+        </div>
+
+        <form id="authForm" class="auth-form" autocomplete="off" novalidate>
+          <div class="field">
+            <label for="emailInput">Email</label>
+            <div class="input-wrap">
+              <svg class="input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <input type="email" id="emailInput" placeholder="you@example.com" required />
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="passwordInput">Password</label>
+            <div class="input-wrap">
+              <svg class="input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              <input type="password" id="passwordInput" placeholder="••••••••" required minlength="6" />
+            </div>
+          </div>
+
+          <button type="submit" id="authSubmit" class="btn-primary">
+            <span class="btn-text">Sign In</span>
+            <span class="btn-spinner"></span>
+          </button>
+
+          <div class="divider"><span>or continue with</span></div>
+
+          <button type="button" id="googleBtn" class="btn-google">
+            <svg width="18" height="18" viewBox="0 0 48 48">
+              <path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/>
+              <path fill="#FF3D00" d="M6.306 14.691l6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"/>
+              <path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238A11.91 11.91 0 0 1 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"/>
+              <path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 0 1-4.087 5.571l.003-.002 6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"/>
+            </svg>
+            Continue with Google
+          </button>
+
+          <button type="button" id="skipBtn" class="btn-skip">
+            <span class="skip-icon">⚡</span>
+            Skip — Generate Inbox Instantly
+          </button>
+
+          <p id="authError" class="error-msg"></p>
+        </form>
+
+        <p class="footer-note">By continuing you agree to our terms. Emails auto-expire after a short time.</p>
+      </div>
+
+      <div class="auth-side">
+        <div class="feature">
+          <div class="feature-icon">🛡️</div>
+          <h3>Stay Anonymous</h3>
+          <p>No personal data, no tracking, no IP logs.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">⚡</div>
+          <h3>Instant Setup</h3>
+          <p>One click and you're in. No forms, no wait.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🔒</div>
+          <h3>Spam-Free</h3>
+          <p>Keep your real inbox clean and protected.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== INBOX PAGE ===================== -->
+  <section id="inboxPage" class="page">
+    <header class="app-header">
+      <div class="header-left">
+        <div class="brand small">
+          <div class="brand-icon small">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M3 7l9 6 9-6M3 7v10a2 2 0 002 2h14a2 2 0 002-2V7M3 7l2-2h14l2 2" stroke="url(#brandGrad2)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <defs>
+                <linearGradient id="brandGrad2" x1="0" y1="0" x2="24" y2="24">
+                  <stop offset="0%" stop-color="#7c5cff"/>
+                  <stop offset="100%" stop-color="#22d3ee"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <span class="brand-name">GhostMail</span>
+        </div>
+      </div>
+
+      <div class="header-center">
+        <div class="email-pill">
+          <span class="email-label">Your inbox</span>
+          <div class="email-line">
+            <code id="currentEmail">…</code>
+            <button id="copyEmailBtn" class="btn-copy" title="Copy email">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <span>Copy</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="header-right">
+        <div class="status-pill" id="refreshStatus" title="Auto-refresh status">
+          <span class="status-dot"></span>
+          <span><strong id="countdownNum">5</strong>s</span>
+        </div>
+        <button id="refreshBtn" class="icon-btn" title="Refresh now">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+        </button>
+        <button id="deleteBtn" class="icon-btn danger" title="Delete inbox">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/></svg>
+        </button>
+        <button id="logoutBtn" class="icon-btn" title="Sign out">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <main class="app-main">
+      <!-- LEFT SIDEBAR -->
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <div class="sidebar-title">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span>Inbox</span>
+          </div>
+          <span id="inboxCount" class="count-pill">0</span>
+        </div>
+
+        <div class="search-box">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="searchInput" placeholder="Search inbox…" />
+        </div>
+
+        <div id="messageList" class="message-list">
+          <!-- messages injected here -->
+        </div>
+
+        <div id="emptyInbox" class="empty-state hidden">
+          <div class="empty-icon">
+            <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg>
+          </div>
+          <h3>Inbox is empty</h3>
+          <p>Waiting for incoming emails</p>
+        </div>
+      </aside>
+
+      <!-- RIGHT VIEWER -->
+      <section class="viewer" id="emailViewer">
+        <div class="viewer-empty">
+          <div class="viewer-empty-icon">
+            <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <h2>Select a message</h2>
+          <p>Choose an email from the inbox to read it here.</p>
+        </div>
+      </section>
+    </main>
+  </section>
+
+  <!-- Toast notifications -->
+  <div id="toast" class="toast"></div>
+
+  <!-- Confirm modal -->
+  <div id="confirmModal" class="modal hidden">
+    <div class="modal-card">
+      <h3 id="confirmTitle">Are you sure?</h3>
+      <p id="confirmMessage">This action cannot be undone.</p>
+      <div class="modal-actions">
+        <button id="confirmCancel" class="btn-secondary">Cancel</button>
+        <button id="confirmOk" class="btn-primary">Confirm</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a0e58e239fe2d7ac',t:'MTc4MTkwMzc5MA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
